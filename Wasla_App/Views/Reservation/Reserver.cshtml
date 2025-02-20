@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Wasla_App.Models.LigneBus>
+
+<div class="container text-center mt-5">
+    <h2 class="text-center">Bienvenue sur Wasla</h2>
+    <h3 class="text-dark text-center">Réservez vos Tickets</h3>
+    <p>Choisissez une ligne de bus pour réserver un billet:</p>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form asp-controller="Reservation" asp-action="RechercherBus" method="get">
+                <div class="form-group">
+                    <label for="depart">Départ</label>
+                    <select class="form-control" id="depart" name="depart" required>
+                        <option value="" disabled selected>Sélectionnez une ville de départ</option>
+                        @foreach (var ligne in Model.Select(l => l.VilleDepart).DistinctBy(v => v.VilleID))
+                        {
+                            <option value="@ligne.VilleID">@ligne.NomVille</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="arrivee">Arrivée</label>
+                    <select class="form-control" id="arrivee" name="arrivee" required>
+                        <option value="" disabled selected>Sélectionnez une ville d'arrivée</option>
+                        @foreach (var ligne in Model.Select(l => l.VilleArrivee).DistinctBy(v => v.VilleID))
+                        {
+                            <option value="@ligne.VilleID">@ligne.NomVille</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dateVoyage">Date De Voyage</label>
+                    <input type="date" class="form-control" id="dateVoyage" name="dateVoyage" required>
+                </div>
+                <div class="form-group">
+                    <label for="voyageurs">Voyageurs</label>
+                    <select class="form-control" id="voyageurs" name="voyageurs" required>
+                        <option value="1">1 personne</option>
+                        <option value="2">2 personnes</option>
+                        <option value="3">3 personnes</option>
+                        <!-- Ajoutez plus d'options si nécessaire -->
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
+            </form>
+        </div>
+    </div>
+</div>

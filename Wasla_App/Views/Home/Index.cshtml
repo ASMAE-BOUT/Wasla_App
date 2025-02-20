@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assurez-vous que le chemin est correct pour votre projet
+    var villes = ViewBag.Villes as IEnumerable<Wasla_App.Models.Ville> ?? new List<Wasla_App.Models.Ville>();
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenue sur Wasla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFD580; /* Orange très clair */
+            color: #000000; /* Noir */
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h3 {
+            color: black;
+            text-align: center;
+        }
+
+        label {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #FF8C00; /* Orange foncé */
+            border-color: #FF8C00;
+        }
+
+            .btn-primary:hover {
+                background-color: #FF4500; /* Couleur encore plus foncée au survol */
+                border-color: #FF4500;
+            }
+    </style>
+</head>
+<body>
+    <div class="container text-center mt-5">
+        <h2>Bienvenue sur Wasla</h2>
+        <h3>Réservez vos Tickets</h3>
+        <p>Choisissez une ligne de bus pour réserver un billet:</p>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form asp-controller="Reservation" asp-action="RechercherBus" method="get">
+                    <div class="form-group">
+                        <label for="depart">Départ</label>
+                        <select class="form-control" id="depart" name="depart" required>
+                            <option value="">Sélectionnez une ville</option>
+                            @foreach (var ville in villes)
+                            {
+                                <option value="@ville.VilleID">@ville.NomVille</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="arrivee">Arrivée</label>
+                        <select class="form-control" id="arrivee" name="arrivee" required>
+                            <option value="">Sélectionnez une ville</option>
+                            @foreach (var ville in villes)
+                            {
+                                <option value="@ville.VilleID">@ville.NomVille</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateVoyage">Date de Voyage</label>
+                        <input type="date" class="form-control" id="dateVoyage" name="dateVoyage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="voyageurs">Voyageurs</label>
+                        <select class="form-control" id="voyageurs" name="voyageurs" required>
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <!-- Ajoutez plus d'options si nécessaire -->
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Rechercher</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

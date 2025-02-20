@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFA07A; /* Orange claire */
+    color: #000000; /* Noir */
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: #000000; /* Noir */
+}
+
+label {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.btn-rechercher {
+    background-color: #FF8C00; /* Orange foncé */
+    border-color: #FF8C00; /* Orange foncé */
+    color: #FFFFFF; /* Blanc */
+}
+
+    .btn-rechercher:hover {
+        background-color: #FF7F50; /* Couleur plus claire pour hover */
+        border-color: #FF7F50;
+    }
+
+
+.footer {
+    background-color: #000000; /* Noir */
+    color: #FFFFFF; /* Blanc */
+    padding: 10px;
+    text-align: center;
+}

@@ -1,0 +1,49 @@
+﻿@model Wasla_App.Models.Billet
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi du Billet - Wasla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFD580; /* Orange très clair */
+            color: #000000; /* Noir */
+            text-align: center; /* Center text for better UX */
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #FF4500; /* Orange foncé for status */
+        }
+
+        .details-container {
+            margin-top: 30px;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="details-container">
+        <h2>Suivi du Billet</h2>
+        <p><strong>Ligne :</strong> @Model.LigneBus.NomLigne</p>
+        <p><strong>De :</strong> @Model.LigneBus.VilleDepart.NomVille</p>
+        <p><strong>À :</strong> @Model.LigneBus.VilleArrivee.NomVille</p>
+        <p><strong>Statut :</strong> <span class="status">@Model.StatutPaiement</span></p>
+    </div>
+</body>
+</html>

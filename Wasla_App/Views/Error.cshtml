@@ -1,0 +1,25 @@
+﻿@model Wasla_App.Models.ErrorModel
+@{
+    ViewData["Title"] = "Erreur";
+}
+
+<h1 class="text-danger">Erreur.</h1>
+<h2 class="text-danger">Une erreur s'est produite lors du traitement de votre demande.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Mode développement</h3>
+<p>
+    La bascule vers l'environnement <strong>Développement</strong> permet d'afficher des informations détaillées sur l'erreur qui s'est produite.
+</p>
+<p>
+    <strong>Le mode de développement ne doit pas être activé pour les applications déployées.</strong>
+    Cela peut entraîner l'affichage d'informations sensibles provenant d'exceptions pour les utilisateurs finaux.
+    Pour le débogage local, activez le mode <strong>Développement</strong> en définissant l'option <strong>ASPNETCORE_ENVIRONMENT</strong>, en mettant la variable d'environnement <strong>Développement</strong>
+    et en redémarrant l'application.
+</p>
